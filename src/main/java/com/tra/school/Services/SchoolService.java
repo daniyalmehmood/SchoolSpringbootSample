@@ -1,5 +1,6 @@
 package com.tra.school.Services;
 
+import com.tra.school.DTO.SchoolDTO;
 import com.tra.school.Models.School;
 import com.tra.school.Models.Student;
 import com.tra.school.Repositories.SchoolRepository;
@@ -49,6 +50,12 @@ public class SchoolService {
         schoolRepository.saveAll(updatedSchoolList);
 
         return "Success";
+    }
+
+    public List<SchoolDTO> getSchools(){
+        List <School> schools = schoolRepository.findAll();
+
+        return SchoolDTO.convertToDTO(schools);
     }
 
 

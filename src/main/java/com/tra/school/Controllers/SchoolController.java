@@ -1,14 +1,12 @@
 package com.tra.school.Controllers;
 
+import com.tra.school.DTO.SchoolDTO;
 import com.tra.school.Models.School;
-import com.tra.school.Models.Student;
-import com.tra.school.Repositories.SchoolRepository;
 import com.tra.school.Services.SchoolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
-import java.util.Date;
+import java.util.List;
 
 @RestController
 @RequestMapping("school")
@@ -34,14 +32,8 @@ public class SchoolController {
         return "Success";
     }
 
-/*    @PutMapping("update")
-    public School update(@RequestParam Integer schoolId,
-                         @RequestParam String schoolName) {
-        School school = schoolRepository.getById(schoolId);
-        if (!school.equals(null)) {
-            school.setSchoolName(schoolName);
-            school = schoolRepository.save(school);
-        }
-        return school;
-    }*/
+    @GetMapping("getAll")
+    public List<SchoolDTO> getSchool(){
+        return schoolService.getSchools();
+    }
 }
