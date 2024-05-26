@@ -3,6 +3,7 @@ package com.tra.school.Controllers;
 import com.tra.school.DTO.SchoolDTO;
 import com.tra.school.Models.School;
 import com.tra.school.Services.SchoolService;
+import com.tra.school.Services.SlackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +15,9 @@ public class SchoolController {
 
     @Autowired
     SchoolService schoolService;
+
+    @Autowired
+    SlackService slackService;
 
     @PostMapping("save")
     public School saveSchool(@RequestBody School school) {
@@ -35,5 +39,10 @@ public class SchoolController {
     @GetMapping("getAll")
     public List<SchoolDTO> getSchool(){
         return schoolService.getSchools();
+    }
+
+    @GetMapping("messages")
+    public void sendMessage(){
+        slackService.sendMessage("", "");
     }
 }
