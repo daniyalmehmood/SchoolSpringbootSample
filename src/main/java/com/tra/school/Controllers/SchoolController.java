@@ -37,12 +37,13 @@ public class SchoolController {
     }
 
     @GetMapping("getAll")
-    public List<SchoolDTO> getSchool(){
+    public List<SchoolDTO> getSchool() {
         return schoolService.getSchools();
     }
 
     @GetMapping("messages")
-    public void sendMessage(){
-        slackService.sendMessage("", "");
+    public void sendMessage(@RequestParam String channel,
+                            @RequestParam String message) {
+        slackService.sendMessage(channel, message);
     }
 }
