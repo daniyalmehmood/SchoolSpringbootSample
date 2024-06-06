@@ -19,13 +19,14 @@ public class MailingService {
     @Value("${spring.mail.username}")
     private String sender;
 
-    public String sendSimpleMail() {
+    public String sendSimpleMail(String toEmail, String fromEmail, String emailBody,
+                                 String subject) {
         try {
             SimpleMailMessage mailMessage = new SimpleMailMessage();
-            mailMessage.setFrom(sender);
-            mailMessage.setTo("muhammad.daniyal@codeline.rihal.om");
-            mailMessage.setText("Hi");
-            mailMessage.setSubject("Testing email");
+            mailMessage.setFrom(fromEmail);
+            mailMessage.setTo(toEmail);
+            mailMessage.setText(emailBody);
+            mailMessage.setSubject(subject);
             mailSender.send(mailMessage);
             return "Success";
         } catch (Exception e) {
@@ -47,9 +48,7 @@ public class MailingService {
             mailSender.send(mimeMessage);
             return "Success";
         }
-        // Catch block to handle MessagingException
         catch (MessagingException e) {
-            // Display message when exception occurred
             return "Error";
         }
     }
