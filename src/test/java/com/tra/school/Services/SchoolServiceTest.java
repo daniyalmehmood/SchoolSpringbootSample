@@ -14,9 +14,19 @@ import static org.mockito.Mockito.*;
 
 class SchoolServiceTest {
 
+    /*
+    This line tells Mockito to create a mock instance of the SchoolRepository class.
+    This mock can then be used to simulate interactions with the repository
+    in a controlled way during your tests.
+    */
     @Mock
     private SchoolRepository schoolRepository;
 
+    /*
+    This tells Mockito to create an instance of the SchoolService class
+    and automatically inject the mock instance of SchoolRepository into it.
+    This allows you to test SchoolService in isolation by using the mock SchoolRepository.
+     */
     @InjectMocks
     private SchoolService schoolService;
 
@@ -38,13 +48,40 @@ class SchoolServiceTest {
         school.setSchoolName("Springfield Elementary");
         school.setLocation("Springfield");
 
-        // Mock repository method
+        /*
+        when: This is a Mockito method used to specify a behavior for a
+                mock object when a particular method is called.
+
+        schoolRepository.save(any(School.class)): This specifies that when the save method of
+                                                  schoolRepository is called with any School object,
+                                                  the behavior should be defined.
+
+        thenReturn(school): This specifies that the save method should return the school object
+                            when it is called with any School object.
+        */
+
+        /*
+        This line effectively tells Mockito that when the save method is called on
+        schoolRepository with any School object, it should return the predefined school object.
+        */
         when(schoolRepository.save(any(School.class))).thenReturn(school);
 
-        // Call service method
+
         School savedSchool = schoolService.saveSchool(school);
 
-        // Verify repository method was called once
+
+
+        /*
+        verify: This is a Mockito method used to check if a particular method on a mock object was called.
+        schoolRepository: This is the mock object on which the method call is verified.
+        times(1): This specifies that the save method should be called exactly once.
+        save(any(School.class)): This specifies that the save method should be called with any School object.
+        */
+
+        /*
+        This line checks that the save method of
+        schoolRepository was called exactly once with any School object.
+        */
         verify(schoolRepository, times(1)).save(any(School.class));
 
         // Assert the returned school matches the mock data

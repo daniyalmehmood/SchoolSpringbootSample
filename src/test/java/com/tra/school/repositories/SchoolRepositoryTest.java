@@ -14,14 +14,45 @@ import org.springframework.test.context.ActiveProfiles;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+
+/*
+* @DataJpaTest is a specialized annotation in Spring Boot for testing JPA repositories.
+* It focuses on testing the persistence layer components (like repositories) and
+* configures in-memory databases (such as H2) by default.
+* This allows you to test your JPA entities, repositories, and related configurations
+* without requiring a full application context.
+ */
 @DataJpaTest
+
+/*
+* @ActiveProfiles("test") annotation in Spring is used to specify which
+* profiles should be active for a particular test.
+* Profiles are a way of grouping configuration settings,
+* and they allow you to change configurations
+* depending on the environment (e.g., development, testing, production).
+* */
 @ActiveProfiles("test")
+
+/*
+* @AutoConfigureTestDatabase annotation in Spring Boot is used to configure
+* the test database
+* that should be used for tests.
+* When you use @DataJpaTest or other similar testing annotations,
+* Spring Boot automatically configures an in-memory database
+* (like H2, HSQL, or Derby) by default.
+* The @AutoConfigureTestDatabase annotation allows you to customize this behavior.
+* */
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
 class SchoolRepositoryTest {
 
     @Autowired
     private SchoolRepository schoolRepository;
 
+    /*
+    * @BeforeEach annotation in JUnit 5 is used to specify that a particular method should be
+    * executed before each test method in the test class.
+    * */
     @BeforeEach
     void setUp() {
         School school1 = School.builder().schoolName("Springfield Elementary")
