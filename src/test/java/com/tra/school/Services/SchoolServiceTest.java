@@ -84,6 +84,7 @@ class SchoolServiceTest {
         */
         verify(schoolRepository, times(1)).save(any(School.class));
 
+
         // Assert the returned school matches the mock data
         assertEquals("Springfield Elementary", savedSchool.getSchoolName());
     }
@@ -93,23 +94,32 @@ class SchoolServiceTest {
         String schoolName = "Springfield Elementary";
 
         // Mock repository method to return a mock School
-        School mockSchool = School.builder()
+        School schoolByLocationName = School.builder()
                 .schoolName(schoolName)
                 .isActive(true)
                 .build();
-        when(schoolRepository.getBySchoolName(schoolName)).thenReturn(mockSchool);
+
+        School schoolToDelete = School.builder()
+                .schoolName(schoolName)
+                .isActive(false)
+                .build();
+
+        when(schoolRepository.getBySchoolName(schoolName)).thenReturn(schoolByLocationName);
+        when(schoolRepository.save(any(School.class))).thenReturn(schoolToDelete);
+
 
         // Call service method
-        String result = schoolService.deleteSchool(schoolName);
+        School schoolDeleteResult = schoolService.deleteSchool(schoolName);
 
         // Verify repository method was called once
         verify(schoolRepository, times(1)).getBySchoolName(schoolName);
-        verify(schoolRepository, times(1)).save(mockSchool);
+        verify(schoolRepository, times(1)).save(schoolToDelete);
 
-        // Assert the result is "Success"
-        assertEquals("Success", result);
+        assertNotNull(schoolDeleteResult);
         // Assert that isActive is set to false
-        assertEquals(false, mockSchool.getIsActive());
+        assertEquals(false, schoolDeleteResult.getIsActive());
+
+        assertEquals("Springfield Elementary", schoolDeleteResult.getSchoolName());
     }
 
     @Test

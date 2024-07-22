@@ -33,11 +33,11 @@ public class SchoolService {
     }
 
 
-    public String deleteSchool(String schoolName) {
+    public School deleteSchool(String schoolName) {
         School schoolFromDb = schoolRepository.getBySchoolName(schoolName);
         schoolFromDb.setIsActive(Boolean.FALSE);
-        schoolRepository.save(schoolFromDb);
-        return "Success";
+        School deletedSchool = schoolRepository.save(schoolFromDb);
+        return deletedSchool;
     }
 
     public String deleteSchoolByLocation(String location) {
