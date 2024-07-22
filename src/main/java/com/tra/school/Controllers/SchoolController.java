@@ -21,11 +21,13 @@ public class SchoolController {
 
     @PostMapping("save")
     public School saveSchool(@RequestBody School school) {
+        System.out.println("saveSchool is running" + school.toString());
         return schoolService.saveSchool(school);
     }
 
     @PostMapping("delete")
     public String deleteSchool(@RequestParam String schoolName) {
+        System.out.println("deleteSchool is running");
         schoolService.deleteSchool(schoolName);
         return "Success";
     }
@@ -45,5 +47,10 @@ public class SchoolController {
     public void sendMessage(@RequestParam String channel,
                             @RequestParam String message) {
         slackService.sendMessage(channel, message);
+    }
+
+    @GetMapping("word")
+    public String sayhi(@RequestParam String word){
+        return word;
     }
 }
