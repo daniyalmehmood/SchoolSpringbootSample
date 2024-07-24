@@ -1,7 +1,6 @@
-package com.tra.school.Logging;
+package com.tra.school.AOP;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
@@ -15,12 +14,17 @@ public class LoggingAdvice {
 
     public static Logger logger = LoggerFactory.getLogger(LoggingAdvice.class);
 
+    public static void testFunc(String... x){
+        //
+    }
 
-    @Pointcut(value = "execution(* com.tra.school.Controllers.SchoolController.*(..))")
+
+
+    @Pointcut(value = "execution(* com.tra.school.Services.*.*(..))")
     public void pointCutDefinitionSchool() {
     }
 
-    @Before(value = "pointCutDefinitionSchool()")
+/*    @Before(value = "pointCutDefinitionSchool()")
     public void logBefore(JoinPoint pjp) {
         System.out.println("Before method: " + pjp.getSignature().getName());
     }
@@ -28,7 +32,7 @@ public class LoggingAdvice {
     @AfterReturning(value = "pointCutDefinitionSchool()", returning = "result")
     public void logAfterReturning(JoinPoint pjp, Object result) {
         System.out.println("After method: " + pjp.getSignature().getName() + ", Result: " + result);
-    }
+    }*/
 
     @Around(value = "pointCutDefinitionSchool()")
     public Object applicationLogger(ProceedingJoinPoint pjp) throws Throwable {
