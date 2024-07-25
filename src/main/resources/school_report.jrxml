@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.1.final using JasperReports Library version 6.20.1-7584acb244139816654f64e2fd57a00d3e31921e  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="School_Report_1" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4644f246-1538-4606-8b51-ce14dacdda9b">
+
+    <field name="schoolId" class="java.lang.Integer">
+    </field>
+    <field name="schoolName" class="java.lang.String">
+    </field>
+    <field name="schoolLocation" class="java.lang.String">
+    </field>
+    <group name="Group1">
+        <groupExpression><![CDATA[$F{schoolId}]]></groupExpression>
+        <groupHeader>
+            <band height="33">
+                <staticText>
+                    <reportElement mode="Opaque" x="0" y="0" width="100" height="32" forecolor="#666666" backcolor="#E6E6E6" uuid="63aeb065-1438-40d9-804b-0ce960b9efc3"/>
+                    <textElement>
+                        <font size="12"/>
+                    </textElement>
+                    <text><![CDATA[School Id]]></text>
+                </staticText>
+                <textField>
+                    <reportElement mode="Opaque" x="100" y="0" width="455" height="32" forecolor="#006699" backcolor="#E6E6E6" uuid="4bd51c42-0cfe-40cd-8aa8-4c03ce8c11fd"/>
+                    <textElement>
+                        <font size="24" isBold="true"/>
+                    </textElement>
+                    <textFieldExpression><![CDATA[$F{schoolId}]]></textFieldExpression>
+                </textField>
+                <line>
+                    <reportElement x="-20" y="32" width="595" height="1" forecolor="#666666" uuid="64fdaf4d-cd8c-44e9-a134-0fb3a5c9db74"/>
+                </line>
+            </band>
+        </groupHeader>
+        <groupFooter>
+            <band/>
+        </groupFooter>
+    </group>
+    <group name="Group2">
+        <groupExpression><![CDATA[$F{schoolName}]]></groupExpression>
+        <groupHeader>
+            <band height="32">
+                <textField>
+                    <reportElement x="100" y="0" width="455" height="32" forecolor="#006699" uuid="59ac8828-1dcf-458b-bea9-1be8c2646ce3"/>
+                    <textElement>
+                        <font size="22" isBold="true"/>
+                    </textElement>
+                    <textFieldExpression><![CDATA[$F{schoolName}]]></textFieldExpression>
+                </textField>
+                <staticText>
+                    <reportElement x="0" y="0" width="100" height="20" forecolor="#666666" uuid="6cbe8115-74b6-4950-8138-fadd7652345b"/>
+                    <textElement>
+                        <font size="12"/>
+                    </textElement>
+                    <text><![CDATA[School Name]]></text>
+                </staticText>
+            </band>
+        </groupHeader>
+        <groupFooter>
+            <band/>
+        </groupFooter>
+    </group>
+    <group name="Group3">
+        <groupExpression><![CDATA[$F{schoolLocation}]]></groupExpression>
+        <groupHeader>
+            <band height="32">
+                <textField>
+                    <reportElement x="100" y="0" width="455" height="32" forecolor="#006699" uuid="34be02b6-9ca3-4ce6-a71c-4211a3195010"/>
+                    <textElement>
+                        <font size="20" isBold="true"/>
+                    </textElement>
+                    <textFieldExpression><![CDATA[$F{schoolLocation}]]></textFieldExpression>
+                </textField>
+                <staticText>
+                    <reportElement x="0" y="0" width="100" height="20" forecolor="#666666" uuid="d2688133-6703-4572-8736-c56e8cfc828c"/>
+                    <textElement>
+                        <font size="12"/>
+                    </textElement>
+                    <text><![CDATA[Location]]></text>
+                </staticText>
+            </band>
+        </groupHeader>
+        <groupFooter>
+            <band/>
+        </groupFooter>
+    </group>
+    <background>
+        <band/>
+    </background>
+    <title>
+        <band height="72">
+            <frame>
+                <reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="64b83a02-2d43-4f9d-9b76-9c1b0ba1f49d"/>
+                <staticText>
+                    <reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="32036603-724c-4b13-b3c7-1481837d9028"/>
+                    <textElement>
+                        <font size="34" isBold="true"/>
+                    </textElement>
+                    <text><![CDATA[TRA School]]></text>
+                </staticText>
+                <staticText>
+                    <reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="2867b158-ca5b-4cd7-a693-7e1b129a0686"/>
+                    <textElement textAlignment="Right">
+                        <font size="14" isBold="false"/>
+                    </textElement>
+                    <text><![CDATA[Code Pioneers Report]]></text>
+                </staticText>
+            </frame>
+        </band>
+    </title>
+    <pageHeader>
+        <band height="13"/>
+    </pageHeader>
+    <columnHeader>
+        <band height="21">
+            <line>
+                <reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="63708ad2-369e-4d1d-bcdb-ca9ad5f3d532"/>
+            </line>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="20">
+            <line>
+                <reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="35eeabb7-a4fd-4ae7-8b3c-f8e515c28d51"/>
+            </line>
+        </band>
+    </detail>
+    <columnFooter>
+        <band/>
+    </columnFooter>
+    <pageFooter>
+        <band height="17">
+            <textField>
+                <reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="ba7a6248-1428-47f6-9d3f-0d96ceaf78cb"/>
+                <textElement textAlignment="Right"/>
+                <textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+            </textField>
+            <textField evaluationTime="Report">
+                <reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="b4563512-5089-4ba1-a31d-6df5a96ccdfb"/>
+                <textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+            </textField>
+            <textField pattern="EEEEE dd MMMMM yyyy">
+                <reportElement x="0" y="4" width="100" height="13" uuid="bcb51fe9-5ef0-4dba-a2b7-39f6093ebae6"/>
+                <textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+            </textField>
+        </band>
+    </pageFooter>
+    <summary>
+        <band/>
+    </summary>
+</jasperReport>

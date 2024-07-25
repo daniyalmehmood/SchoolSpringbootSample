@@ -2,6 +2,7 @@ package com.tra.school.Controllers;
 
 import com.tra.school.DTO.SchoolDTO;
 import com.tra.school.Models.School;
+import com.tra.school.Services.ReportService;
 import com.tra.school.Services.SchoolService;
 import com.tra.school.Services.SlackService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ public class SchoolController {
 
     @Autowired
     SlackService slackService;
+
+    @Autowired
+    ReportService reportService;
 
     @PostMapping("save")
     public School saveSchool(@RequestBody School school) {
@@ -39,7 +43,8 @@ public class SchoolController {
     }
 
     @GetMapping("getAll")
-    public List<SchoolDTO> getSchool() {
+    public List<SchoolDTO> getSchool() throws Exception {
+        reportService.createSchoolReport();
         return schoolService.getSchools();
     }
 
@@ -50,7 +55,7 @@ public class SchoolController {
     }
 
     @GetMapping("word")
-    public String sayhi(@RequestParam String word){
+    public String sayhi(@RequestParam String word) {
         return word;
     }
 }
